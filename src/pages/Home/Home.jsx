@@ -5,27 +5,23 @@ import { Task } from "../../components/Task/Task";
 import { useState } from "react";
 
 export const Home = function () {
-  const [tasks, setTasks] = useState([]);
-  const [inputValue, setInputValue] = useState([]);
+  const [listTask, setListTask] = useState([]);
+  const [isTaskUpdated, setIsTaskUpdated] = useState(false);
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-  };
-  const handleFormSubmit = (e) => {
-    const newTask = { name: inputValue, completed: false };
-    setTasks([...tasks, newTask]);
-    setInputValue("");
-  };
+  if (isTaskUpdated) {
+    setListTask(listTask);
+    setIsTaskUpdated(false);
+  }
+
   return (
     <div className="container">
       <div className="container-todo">
         <Header />
-        <AddTask
-          onSubmit={handleFormSubmit}
-          value={inputValue}
-          onChange={handleInputChange}
-        />
-        <Task tasks={tasks} />
+        <AddTask />
+        <Task tasks={listTask} />
+        <div className="delete">
+          <button>Remove checked</button>
+        </div>
       </div>
     </div>
   );

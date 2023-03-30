@@ -1,7 +1,11 @@
 import "./Task.css";
 import { AiFillCloseCircle, AiFillDownCircle } from "react-icons/ai";
 
-export const Task = function ({ task, setIsTaskUpdated }) {
+export const Task = function ({ task, setListTask, setIsTaskUpdated }) {
+  function handleClick(e) {
+    task.map((task) => (task.checked = false));
+    setIsTaskUpdated(true);
+  }
   return (
     <div className="container-task">
       <div className="task">
@@ -9,7 +13,7 @@ export const Task = function ({ task, setIsTaskUpdated }) {
           <span className="valid">
             <AiFillDownCircle />
           </span>
-          <span className="delete">
+          <span className="delete" onClick={handleClick}>
             <AiFillCloseCircle />
           </span>
         </div>
