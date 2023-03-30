@@ -1,0 +1,30 @@
+.container-task {
+    border: 1px solid black;
+    width: 50vw;
+    min-height: 50vh;
+    background-color: whitesmoke;
+    margin: 2rem auto;
+}
+
+.task {
+    height: 5vh;
+    margin: 1rem;
+    border-bottom: 1px solid black;
+}
+
+.icons {
+    width: 10vw;
+    height: 5vh;
+    float: right;
+}
+
+.valid, .delete {
+    margin: 1rem;
+    font-weight: bold;
+    font-size: 2rem;
+    color: mediumseagreen;
+}
+
+.delete {
+    color: indianred;
+}
