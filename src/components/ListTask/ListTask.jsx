@@ -2,9 +2,10 @@ import "./ListTask.css";
 import { Task } from "../Task/Task";
 
 export const ListTask = function ({ listTask, setIsTaskUpdated, setListTask }) {
+  const filterListTask = listTask.filter((task) => !task.remove);
   return (
     <ul className="task-list">
-      {listTask.map((task) => (
+      {filterListTask.map((task) => (
         <Task
           key={task.id}
           listTask={task}

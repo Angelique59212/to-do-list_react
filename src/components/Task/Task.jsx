@@ -12,11 +12,28 @@ export const Task = function ({ listTask, setIsTaskUpdated, setListTask }) {
     setIsTaskUpdated(true);
   }
 
+  function handleKeyDown(event) {
+    if (event.keyCode === 13) {
+      // Enter key code
+      const updatedTask = {
+        ...listTask,
+        text: event.target.value,
+        edit: false,
+      };
+      setListTask((visualListTask) =>
+        visualListTask.map((task) =>
+          task.id === listTask.id ? updatedTask : task
+        )
+      );
+      setIsTaskUpdated(true);
+    }
+  }
+
   function editTask() {
-    const updateTask = { ...listTask, edit: !listTask.edit };
+    const updatedTask = { ...listTask, edit: !listTask.edit };
     setListTask((visualListTask) =>
       visualListTask.map((task) =>
-        task.id === listTask.id ? updateTask : task
+        task.id === listTask.id ? updatedTask : task
       )
     );
     setIsTaskUpdated(true);
@@ -40,7 +57,12 @@ export const Task = function ({ listTask, setIsTaskUpdated, setListTask }) {
         <input type="checkbox" onClick={handleChange} />
       )}
       {listTask.edit ? (
-        <input type="text" className="name" />
+        <input
+          type="text"
+          className="name"
+          defaultValue={listTask.text}
+          onKeyDown={handleKeyDown}
+        />
       ) : (
         <span className={`name ${listTask.completed ? "completed" : ""}`}>
           {listTask.text}
