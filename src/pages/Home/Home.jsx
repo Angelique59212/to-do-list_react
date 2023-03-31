@@ -3,6 +3,7 @@ import { Header } from "../../components/Header/Header";
 import { AddTask } from "../../components/AddTask/AddTask";
 import { useState } from "react";
 import { ListTask } from "../../components/ListTask/ListTask";
+import { ProgressBar } from "../../components/ProgressBar/ProgressBar";
 
 export const Home = function () {
   const [listTask, setListTask] = useState([]);
@@ -27,6 +28,7 @@ export const Home = function () {
           listTask={listTask}
           setListTask={setListTask}
         />
+        <ProgressBar listTask={listTask} />
         <div className="delete">
           <button onClick={handleRemoveChecked}>Remove checked</button>
         </div>
