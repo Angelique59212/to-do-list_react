@@ -2,7 +2,7 @@ import "./ProgressBar.css";
 
 import { useState, useEffect } from "react";
 
-export const ProgressBar = ({ listTask }) => {
+export const ProgressBar = ({ listTask, isTaskUpdated }) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ export const ProgressBar = ({ listTask }) => {
         ? Math.round((completedTasks.length / listTask.length) * 100)
         : 0;
     setProgress(progressPercentage);
-  }, [listTask]);
+  }, [listTask, isTaskUpdated]);
 
   return (
     <div className="container-bar">

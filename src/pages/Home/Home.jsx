@@ -9,9 +9,16 @@ export const Home = function () {
   const [listTask, setListTask] = useState([]);
   const [isTaskUpdated, setIsTaskUpdated] = useState(false);
 
-  const handleRemoveChecked = () => {
-    setListTask(listTask.filter((task) => !task.remove));
-    setIsTaskUpdated(false);
+  /**
+   * delete allTasks
+   */
+  const handleRemoveAll = () => {
+    setListTask([]);
+    setIsTaskUpdated(true);
+  };
+
+  const handleRemoveTask = () => {
+    setIsTaskUpdated(!isTaskUpdated);
   };
 
   return (
@@ -27,10 +34,11 @@ export const Home = function () {
           setIsTaskUpdated={setIsTaskUpdated}
           listTask={listTask}
           setListTask={setListTask}
+          handleRemoveTask={handleRemoveTask}
         />
-        <ProgressBar listTask={listTask} />
+        <ProgressBar listTask={listTask} isTaskUpdated={isTaskUpdated} />
         <div className="delete">
-          <button onClick={handleRemoveChecked}>Remove checked</button>
+          <button onClick={handleRemoveAll}>Remove checked</button>
         </div>
       </div>
     </div>
