@@ -6,6 +6,7 @@ export const ListTask = function ({
   setIsTaskUpdated,
   setListTask,
   handleRemoveTask,
+  isTaskUpdated,
 }) {
   const filterListTask = listTask.filter((task) => !task.remove);
   return (
@@ -16,6 +17,8 @@ export const ListTask = function ({
           listTask={task}
           setIsTaskUpdated={setIsTaskUpdated}
           setListTask={setListTask}
+          handleRemoveTask={handleRemoveTask}
+          isTaskUpdated={isTaskUpdated}
         />
       ))}
     </ul>

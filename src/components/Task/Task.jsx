@@ -1,7 +1,13 @@
 import "./Task.css";
 import { AiFillCloseCircle, AiTwotoneEdit } from "react-icons/ai";
 
-export const Task = function ({ listTask, setIsTaskUpdated, setListTask }) {
+export const Task = function ({
+  listTask,
+  setIsTaskUpdated,
+  setListTask,
+  handleRemoveTask,
+  isTaskUpdated,
+}) {
   function handleChange() {
     const updateTask = { ...listTask, completed: !listTask.completed };
     setListTask((visualListTask) =>
@@ -14,7 +20,6 @@ export const Task = function ({ listTask, setIsTaskUpdated, setListTask }) {
 
   function handleKeyDown(event) {
     if (event.keyCode === 13) {
-      // Enter key code
       const updatedTask = {
         ...listTask,
         text: event.target.value,
@@ -46,7 +51,8 @@ export const Task = function ({ listTask, setIsTaskUpdated, setListTask }) {
         task.id === listTask.id ? updateTask : task
       )
     );
-    setIsTaskUpdated(true);
+    handleRemoveTask(listTask.id);
+    setIsTaskUpdated(!isTaskUpdated);
   }
 
   return (

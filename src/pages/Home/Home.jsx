@@ -17,8 +17,9 @@ export const Home = function () {
     setIsTaskUpdated(true);
   };
 
-  const handleRemoveTask = () => {
-    setIsTaskUpdated(!isTaskUpdated);
+  const handleRemoveTask = (taskId) => {
+    setListTask(listTask.filter((task) => task.id !== taskId));
+    setIsTaskUpdated(true);
   };
 
   return (
@@ -31,10 +32,11 @@ export const Home = function () {
           setListTask={setListTask}
         />
         <ListTask
-          setIsTaskUpdated={setIsTaskUpdated}
           listTask={listTask}
+          setIsTaskUpdated={setIsTaskUpdated}
           setListTask={setListTask}
           handleRemoveTask={handleRemoveTask}
+          isTaskUpdated={isTaskUpdated}
         />
         <ProgressBar listTask={listTask} isTaskUpdated={isTaskUpdated} />
         <div className="delete">
